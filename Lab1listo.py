@@ -1,19 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 23 19:12:45 2021
-
-@author: FelipeJr
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 
 from numpy import random
+
+print("")
+print("¡Bienvenido al juego MEMORICE!")
 print("")
 print("INTRODUCCION")
 print("")
@@ -22,56 +11,57 @@ print("en donde usted debera ingresar cada variable.")
 print("Por ejemplo, si desea ingresar la coordenada (0,1) se debe escribir como")
 print("X = 0")
 print("Y = 1")
+print("")
+print("En la linea de codigo numero 52 se encuentra el valor de las cartas para el memorice")
 
-cant_cartas = int(input("¿Con cuantas cartas desea jugar? "))
+amount_of_cards = int(input("¿Con cuantos pares de cartas desea jugar? "))
 
-cartas1 = list(range(1, cant_cartas+1))
-cartas2 = list(range(1, cant_cartas+1))
+cards1 = list(range(1, amount_of_cards+1))
+cards2 = list(range(1, amount_of_cards+1))
 
-random.shuffle(cartas1)
-random.shuffle(cartas2)
+random.shuffle(cards1)
+random.shuffle(cards2)
 
 a = 0
 n = 1
-jugador1 = 0
-jugador2 = 0
-contador_final = 0
+player1 = 0
+player2 = 0
+final_counter = 0
 
 
-coordenadas0 = []
-coordenadas1 = []
+coordinates0 = []
+coordinates1 = []
 
 
-while contador_final < cant_cartas:
+while final_counter < amount_of_cards:
       
-    while a < cant_cartas:
+    while a < amount_of_cards:
         
-        coordenadas0.append((a,1))
-        coordenadas1.append((a,0))
+        coordinates0.append((a,1))
+        coordinates1.append((a,0))
         a+= 1
-    
-    
+      
     print("--------------------------------")
-    print(coordenadas0)
-    print(coordenadas1)
+    print(coordinates0)
+    print(coordinates1)
     print("")
     print("ingrese la coordenada que desea elegir. Se representará como (X, Y)")
     print("")
     print("ahora es el turno del jugador", n)
     
-#    print("Esta es la respuesta")   
-#    print(cartas1)
-#    print(cartas2)
+    print("Esta es la respuesta")   
+    print(cards1)
+    print(cards2)
     
     x = int(input("X = "))
     y = int(input("Y = "))
     print("")
     
-    valor1 = cartas1[x]
-    valor2 = cartas2[x]
+    value1 = cards1[x]
+    value2 = cards2[x]
     
     
-    if x > cant_cartas or x < 0:
+    if x > amount_of_cards or x < 0:
         print("ingrese un numero valido para X")
         
     if y > 1 or y < 0:
@@ -79,12 +69,12 @@ while contador_final < cant_cartas:
     
     
     if y == 1:
-        print("la carta obtenida es ", valor1)
-        jugada1 = valor1
+        print("la carta obtenida es ", value1)
+        move1 = value1
     
     if y == 0:
-        print("la carta obtenida es ", valor2)
-        jugada1 = valor2
+        print("la carta obtenida es ", value2)
+        move1 = value2
     
     
     print("")
@@ -94,63 +84,107 @@ while contador_final < cant_cartas:
     print("")
     
     
-    valor3 = cartas1[x1]
-    valor4 = cartas2[x1]
+    value3 = cards1[x1]
+    value4 = cards2[x1]
     
     
-    if x1 > cant_cartas or x1 < 0:
+    if x1 > amount_of_cards or x1 < 0:
         print("ingrese un numero valido para X")
         
     if y1 > 1 or y1 < 0:
         print("ingrese un numero valido para Y")    
     
     if y1 == 1:
-        print("la carta obtenida es ", valor3)
-        jugada2 = valor3
+        print("la carta obtenida es ", value3)
+        move2 = value3
         
     if y1 == 0:
-        print("la carta obtenida es ", valor4)
-        jugada2 = valor4
+        print("la carta obtenida es ", value4)
+        move2 = value4
         
     print("")
     
-    if jugada1 != jugada2 and n == 2:
+    if move1 != move2 and n == 2:
         n = 1
     
-    elif jugada1 != jugada2 and n == 1:
+    elif move1 != move2 and n == 1:
         n = 2
 
-    if jugada1 == jugada2:
+    if move1 == move2:
         
         if n == 1:
-            jugador1 += 1
+            player1 += 1
         if n == 2:
-            jugador2 += 1
+            player2 += 1
             
         print("El jugador", n ,"ha ganado 1 punto.")
         print("")
         print("Resultado por el momento:")
-        print("Jugador 1 =", jugador1)
-        print("Jugador 2 =", jugador2)
+        print("Jugador 1 =", player1)
+        print("Jugador 2 =", player2)
         
-        contador_final += 1
+        final_counter += 1
         
         if y == 1:
-            coordenadas0.remove((x, 1))
-            coordenadas0.insert(x, " ")
+            coordinates0.remove((x, 1))
+            coordinates0.insert(x, " ")
             
         if y == 0:
-            coordenadas0.remove((x, 0))
-            coordenadas0.insert(x, " ")
+            coordinates0.remove((x, 0))
+            coordinates0.insert(x, " ")
             
         if y1 == 1:
-            coordenadas1.remove((x1, 1))
-            coordenadas1.insert(x1, " ")
+            coordinates1.remove((x1, 1))
+            coordinates1.insert(x1, " ")
+            
         if y1 == 0:
-            coordenadas1.remove((x1, 0))
-            coordenadas1.insert(x1, " ")
+            coordinates1.remove((x1, 0))
+            coordinates1.insert(x1, " ")
         
+print("")
 
+if player1 == player2:
+    print("Hubo un empate.")
+
+if player1 < player2:
+    print("¡Ha ganado el jugador 2, felicitaciones!")
+
+if player1 > player2:
+    print("¡Ha ganado el jugador 1, felicitaciones!")
+
+print("")
 print("El juego ha acabado.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
