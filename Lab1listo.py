@@ -36,7 +36,7 @@ n = 1
 jugador1 = 0
 jugador2 = 0
 contador_final = 0
-contador_jugador1 = 1
+
 
 coordenadas0 = []
 coordenadas1 = []
@@ -150,40 +150,7 @@ while contador_final < cant_cartas:
             coordenadas1.remove((x1, 0))
             coordenadas1.insert(x1, " ")
         
-        
-    else:
-        contador_jugador1 = 0
 
 print("El juego ha acabado.")
     
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
